@@ -22,7 +22,7 @@ final class App
             $action = strtolower($pathParts[1]);
         }
 
-        if (class_exists($controller) && method_exists($controller, $action)) {
+        if (file_exists('app/controller/' . $controller . '.php') && class_exists($controller) && method_exists($controller, $action)) {
             $controllerInstance = new $controller();
             $controllerInstance->$action();
         } else {
